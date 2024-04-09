@@ -2,7 +2,7 @@
 
 一个用于地面车辆的SLAM系统，融合IMU、激光雷达、底盘车速和GPS，采用基于迭代卡尔曼滤波的Vehicle-LiDAR-Inertial-Odometry前端，后端基于ScanContext实现回环检测，添加GPS因子，完成位姿图优化。
 
-![img](http://szari.tpddns.cn:8088/asdleng/VLIO-SLAM/src/branch/master/PGO/data/tongji.png)
+![img](https://github.com/asdleng/VLIO-SLAM/blob/master/PGO/data/tongji.png)
 
 ## Prerequisites
 
@@ -54,7 +54,7 @@ roslaunch aloam_velodyne fastlio_velodyne_VLP_16.launch
 
 **22/10/12更新：**
 
-![img](http://szari.tpddns.cn:8088/asdleng/VLIO-SLAM/src/branch/master/PGO/data/relocalization.gif)
+![img](https://github.com/asdleng/VLIO-SLAM/blob/master/PGO/data/relocalization.gif)
 
 新增重定位/全局定位模块
 
@@ -72,4 +72,4 @@ roslaunch aloam_velodyne relocalization.launch
 
 ## Acknowledgements
 
-该仓库来自 [FAST-LIO](https://github.com/hku-mars/FAST_LIO) 与 [FAST-LIO-LC](https://github.com/yanliang-wang/FAST_LIO_LC)的内容融合，添加了一个地面观测和车速观测
+来自 [FAST-LIO](https://github.com/hku-mars/FAST_LIO) 与 [FAST-LIO-LC](https://github.com/yanliang-wang/FAST_LIO_LC)的内容融合，添加了一个地面观测和车速观测，以及重定位模块

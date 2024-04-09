@@ -1,0 +1,15 @@
+<launch>
+
+    <param name="KeyFramePath" type="string" value="/home/i/VLIO/src/VLIO/PGO/keyframes"/>
+
+    <param name="lidar_topic" type="string" value="/point_cloud"/>
+
+    <param name="ndt_score_topic" type="string" value="/transform_probability"/>
+
+     <param name="scan_line" type="int" value="16" />
+
+        <!-- nodes -->
+    <node pkg="aloam_velodyne" type="relocalization" name="relocalization" output="screen" /> 
+    <node pkg="fast_lio_vehicle" type="autoad_convert" name="autoad_convert" output="screen" /> 
+
+</launch>

@@ -1,0 +1,9 @@
+#底盘状态CAN信号结构变量
+Header header   # standard ROS message header
+
+VCU_DCU_Joystick_0x301  obejct_VCU_DCU_Joystick_0x301
+VCU_DCU_Motor_St_0x302  object_VCU_DCU_Motor_St_0x302
+VCU_DCU_MCU_St_0x303    object_VCU_DCU_MCU_St_0x303
+VCU_DCU_BAT_St_1_0x304  object_VCU_DCU_BAT_St_1_0x304
+VCU_DCU_BAT_St_2_0x305  object_VCU_DCU_BAT_St_2_0x305
+VCU_DCU_Veh_St_0x306    object_VCU_DCU_Veh_St_0x306

@@ -1,0 +1,46 @@
+common:
+    raw_lid_topic:  ""
+    lid_topic: "/velodyne_points"
+    imu_topic:  "/zed2/zed_node/imu/data"
+    dyna_topic: "/dyna"
+    chassis_topic: "/chassis_msgs"
+    time_sync_en: false         # ONLY turn on when external time synchronization is really not possible
+    
+preprocess:
+    lidar_type: 2                # 1 for Livox serials LiDAR, 2 for Velodyne LiDAR, 3 for ouster LiDAR, 
+    scan_line: 16
+    scan_rate: 10                # only need to be set for velodyne, unit: Hz,
+    blind: 5
+
+mapping:
+    acc_cov: 0.01
+    gyr_cov: 0.01
+    b_acc_cov: 0.0001
+    b_gyr_cov: 0.0001
+    enable_ground: false # true: enable the ground
+    ground_cov_diag: [0.01,0.01,0.01]
+    enable_dyna: false # true: enable the dyna
+    dyna_time_delay: 0.0
+    dyna_cov_diag: [0.01,1000,1000,1000]
+    fov_degree:    360
+    det_range:     50.0
+    
+    extrinsic_est_en:  false      # true: enable the online estimation of IMU-LiDAR extrinsic,2, 0, -0.4
+    extrinsic_T: [-0.253836, -0.465109, -0.230966]
+    extrinsic_R: [  0.9973296,  0.0527425, -0.0505168,
+  -0.0520207,  0.9985257,  0.0154993,
+   0.0512598, -0.0128300,  0.9986029 ]
+    extrinsic_T_V: [0,0, -0.5]
+    extrinsic_R_V: [1, 0, 0,
+                                    0, 1, 0,
+                                    0, 0, 1]
+publish:
+    path_en:  true
+    scan_publish_en:  true       # false: close all the point cloud output
+    dense_publish_en: true       # false: low down the points number in a global-frame point clouds scan.
+    scan_bodyframe_pub_en: true  # true: output the point cloud scans in IMU-body-frame
+    ground_publish_en: true # true: output the ground point cloud under vehicle
+pcd_save:
+    pcd_save_en: false
+    interval: -1                 # how many LiDAR frames saved in each pcd file; 
+                                 # -1 : all frames will be saved in ONE pcd file, may lead to memory crash when having too much frames.

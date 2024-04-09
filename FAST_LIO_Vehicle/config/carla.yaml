@@ -1,0 +1,48 @@
+common:
+    is_carla: 1
+    raw_carla_lid_topic:  "/carla/ego_vehicle/lidar/lidar1/point_cloud"
+    lid_topic: "/point_cloud"
+    imu_topic:  "/carla/ego_vehicle/imu/imu1"
+    dyna_topic: "/dyna"
+    carla_chassis_topic: "/carla/ego_vehicle/vehicle_status"
+    chassis_rate: 50  # 必须整除于100
+    lidar_rate: 10  # 必须整除于100
+    time_sync_en: false         # ONLY turn on when external time synchronization is really not possible
+    
+preprocess:
+    lidar_type: 2                # 1 for Livox serials LiDAR, 2 for Velodyne LiDAR, 3 for ouster LiDAR, 
+    scan_line: 16
+    scan_rate: 10                # only need to be set for velodyne, unit: Hz,
+    blind: 2
+
+mapping:
+    acc_cov: 0.1
+    gyr_cov: 0.1
+    b_acc_cov: 0.0001
+    b_gyr_cov: 0.0001
+    enable_ground: true # true: enable the ground
+    ground_cov_diag: [0.1,0.1,0.1]
+    enable_dyna: true # true: enable the dyna
+    dyna_cov_diag: [0.1,100,100,1000]
+    fov_degree:    360
+    det_range:     50.0
+    
+    extrinsic_est_en:  false      # true: enable the online estimation of IMU-LiDAR extrinsic,2, 0, -0.4
+    extrinsic_T: [ -2, 0, 0.4]
+    extrinsic_R: [  1, 0, 0,
+                                0, 1, 0,
+                                0, 0, 1   ]
+    extrinsic_T_V: [-2, 0, -2]
+    extrinsic_R_V: [1, 0, 0,
+                                    0, 1, 0,
+                                    0, 0, 1]
+publish:
+    path_en:  true
+    scan_publish_en:  true       # false: close all the point cloud output
+    dense_publish_en: true       # false: low down the points number in a global-frame point clouds scan.
+    scan_bodyframe_pub_en: true  # true: output the point cloud scans in IMU-body-frame
+    ground_publish_en: true # true: output the ground point cloud under vehicle
+pcd_save:
+    pcd_save_en: false
+    interval: -1                 # how many LiDAR frames saved in each pcd file; 
+                                 # -1 : all frames will be saved in ONE pcd file, may lead to memory crash when having too much frames.
